@@ -1,0 +1,797 @@
+//基本檔案
+@import 'reset';
+@import 'layout';
+@import 'color';
+@import 'fonts';
+@import 'animation';
+@import 'default';
+@import 'screen';
+
+//雲端字體
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap');
+
+//js
+.image-show{
+    opacity: 1;
+    visibility: visible;
+}
+.image-hide{
+    opacity: 0;
+    visibility: hidden;
+}
+//內容樣式
+*{
+    font-family: 'Noto Serif TC', serif;
+}
+
+*::selection{
+    background-color: $light-gray;
+}
+
+.btn{
+    @include font(16px);
+    padding: 12px 16px !important;
+    font-weight: bold;
+    color: $primary !important;
+    background-color: $white !important;
+    border-radius: 10000px !important;
+    display: inline-block;
+    text-align: center;
+}
+
+.icon-btn{
+    @include font(16px);
+    padding: 12px 16px !important;
+    font-weight: bold;
+    color: $primary !important;
+    background-color: $white !important;
+    border-radius: 10000px !important;
+    display: inline-block;
+    text-align: center;
+    i{
+        @include m-r(8px);
+    }    
+}
+
+body{
+    background-color: $primary;
+    overflow-x: hidden;
+}
+
+.content{
+    @include p-y(120px, 120px);
+}
+
+$content-border:16px;
+
+.bg-line{
+    width: 1px;
+    background-color: $primary*0.9;
+    z-index: -99;
+}
+
+.bg-line-one{
+    @include fixed(0, none, 0, 20%, auto);
+}
+.bg-line-two{
+    @include fixed(0, none, 0, 40%, auto);
+}
+.bg-line-three{
+    @include fixed(0, none, 0, 60%, auto);
+}
+.bg-line-four{
+    @include fixed(0, none, 0, 80%, auto);
+}
+
+.mx{
+    @include m-x(10%, 10%);
+}
+
+.px{
+    @include p-x(10%, 10%);
+}
+
+header{
+    .menu{
+        @include fixed(0, 0, none, 0, auto);
+        @include flex-row;
+        background-color: $primary;
+        align-items: center;
+        z-index: 999;
+        .menu-list{
+            @include p-y(8px, 8px);
+            .menu-list-link{
+                @include font(16px);
+                color: $white;
+                display: block;
+                i{
+                    @include m-r(8px);
+                }
+            }
+            .dropdownmenu{
+                @include absolute(none, -32px, none, none, auto);
+                width: 144px;
+                background-color: $white;
+                border-radius: $content-border;
+                display: none;
+                box-shadow: 0 4px 8px rgba(50, 50, 50, 0.15);
+                .dropdownmenu-list{
+                    .dropdownmenu-list-link{
+                        @include p-x(16px, 16px);
+                        @include p-y(12px, 12px);
+                        display: block;
+                        color: $primary;
+                    }
+                }
+            }
+        }
+        .dropdownmenu-btn{
+            position: relative;
+        }
+        .menu-list:first-child{
+            @include m-x(0, auto);
+        }
+        .menu-list:nth-child(2){
+            @include m-x(auto, 24px);
+        }
+        .menu-list:nth-child(3){
+            @include m-x(24px, 24px);
+        }
+        .menu-list:last-child{
+            @include m-x(24px, 0px);
+        }
+    }
+}
+
+$maim-vision-circle-s:8px;
+$maim-vision-circle-m:16px;
+$maim-vision-circle-l:32px;
+$maim-vision-circle-xl:48px;
+$border-circle:100000px; 
+@keyframes circle-animation {
+    0%{opacity: 0;}
+    100%{opacity: 100;}
+}
+.main-vision{
+    height: 100vh;
+    min-height: 720px;
+    position: relative;
+    img{
+        @include absolute(0, 0, 0, 0, auto);
+    }
+    .main-vision-other{
+        @include flex-row;
+        @include absolute(none, 0, 24px, 0, auto);
+        align-items: center;
+        p:first-child{
+            @include m-x(0, auto);
+            @include font(24px);
+            font-weight: bold;
+            color: $white;
+        }
+        p:last-child{
+            @include m-x(auto, 0);
+            @include font(48px);
+            font-weight: bold;
+            color: $special;
+        }
+    }
+    .main-vision-circle{
+        background-color: $other;
+        border-radius: $border-circle;
+        z-index: -9;
+    }
+    .main-vision-circle-01{
+        @include absolute(16%, 0, none, none, auto);
+        height: $maim-vision-circle-xl;
+        width: $maim-vision-circle-xl;
+        animation: circle-animation 0.5s 0.5s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-02{
+        @include absolute(8%, none, none, 5%, auto);
+        height: $maim-vision-circle-xl;
+        width: $maim-vision-circle-xl;
+        animation: circle-animation 0.5s 0s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-03{
+        @include absolute(none, 0, 8%, 0, auto);
+        height: $maim-vision-circle-l;
+        width: $maim-vision-circle-l;
+        animation: circle-animation 0.75s 0.25s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-04{
+        @include absolute(none, none, 8%, 16%, auto);
+        height: $maim-vision-circle-m;
+        width: $maim-vision-circle-m;
+        animation: circle-animation 0.25s 0.5s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-05{
+        @include absolute(16%, none, none, 0, auto);
+        height: $maim-vision-circle-m;
+        width: $maim-vision-circle-m;
+        animation: circle-animation 0.6s 0.25s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-06{
+        @include absolute(none, none, 24%, 8%, auto);
+        height: $maim-vision-circle-xl;
+        width: $maim-vision-circle-xl;
+        animation: circle-animation 0.6s 0.2s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-07{
+        @include absolute(0, 0, none, 0, auto);
+        height: $maim-vision-circle-m;
+        width: $maim-vision-circle-m;
+        animation: circle-animation 0.5s 1s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-08{
+        @include absolute(10%, none, none, 16%, auto);
+        height: $maim-vision-circle-m;
+        width: $maim-vision-circle-m;
+        animation: circle-animation 0.5s 0.3s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-09{
+        @include absolute(none, none, 16%, 0, auto);
+        height: $maim-vision-circle-xl;
+        width: $maim-vision-circle-xl;
+        animation: circle-animation 0.5s 0.4s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-10{
+        @include absolute(none, 24%, 16%, none, auto);
+        height: $maim-vision-circle-s;
+        width: $maim-vision-circle-s;
+        animation: circle-animation 0.5s 0.35s ease-in-out infinite alternate-reverse;
+    }
+    .main-vision-circle-11{
+        @include absolute(none, 8%, 16%, none, auto);
+        height: $maim-vision-circle-xl;
+        width: $maim-vision-circle-xl;
+        animation: circle-animation 0.5s 1s ease-in-out infinite alternate-reverse;
+    }
+}
+
+.event-info{
+    .event-info-character{
+        @include m-b(64px);
+        @include flex-row;
+        div{
+            width: 25%;
+            border: 1px solid $white;
+            border-radius: $content-border;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            p{
+                @include font(48px);
+                white-space: nowrap;
+                text-align: center;
+                font-weight: 600;
+            }
+            span{
+                @include font(16px);
+                @include absolute(none, 0, 16px, 0, auto);
+                color: $deep-gray;
+                text-align: center;
+                display: block;
+            }
+            img{
+                @include linear(0.5s);
+                @include absolute(0, 0, 0, 0, auto);
+            }
+        }
+        div:first-child{
+            @include m-x(0, 12px);
+            color: $white;
+            background-color: $primary;
+        }
+        div:nth-child(2),div:nth-child(3){
+            @include m-x(12px, 12px);
+        }
+        div:last-child{
+            @include m-x(12px, 0);
+        }
+        div:nth-child(2),div:nth-child(3),div:last-child{
+            color: $primary;
+            background-color: $white;
+        }
+    }
+    h2{
+        @include font(24px);
+        color: $special;
+    }
+    h3{
+        @include font(48px);
+        font-weight: 600;
+        color: $white;
+    }
+    h2, h3{
+        @include m-b(16px);
+    }
+}
+
+@keyframes items-move {
+    0%{top:0;}
+    100%{top:32px;}
+}
+.books-info{
+    align-items: center;
+    position: relative;
+    .books-info-title{
+        @include m-x(0, 12px);
+        @include flex-col;
+        width: 50%;
+        color: $white;
+        h4{
+            @include m-b(56px);
+            @include font(72px);
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+        }
+        img{
+            @include m-x(auto, auto);
+            @include m-b(56px);
+            width: 100%;
+            max-width: 520px;
+        }
+        div{
+            h5{
+                @include font(48px);
+                white-space: nowrap;
+            }
+            p{
+                @include font(24px);
+                white-space: nowrap;
+            }
+        }
+        h4, img, div{
+            text-align: center;
+        }
+    }
+    .books-info-content{
+        @include m-x(0, 12px);
+        width: 50%;
+        .books-info-content-wrapper{
+            @include m-b(24px);
+            @include flex-row;
+            align-items: center;
+            .books-info-content-wrapper-img{
+                @include m-x(0, 12px);
+                width: 33%;
+                border-radius: $content-border;
+                background-color: $white;
+                overflow: hidden;
+                position: relative;
+            }
+            .books-info-content-wrapper-data{
+                @include m-x(12px, 0);
+                width: 66%;
+                h6{
+                    @include font(20px);
+                    color: $special;
+                    font-weight: bold;
+                }
+                p{
+                    @include font(16px);
+                    color: $white;
+                }
+                span{
+                    @include font(16px);
+                    color: $white;
+                    display: block;
+                }
+                a{  
+                }
+                h6, p, span, a{
+                    @include m-b(16px);
+                }
+            }
+        }
+    }
+    .books-info-items{
+        z-index: -9;
+        animation: items-move 1s infinite alternate-reverse;
+    }
+}
+.books-info:nth-child(odd){
+    @include flex-row-r;
+    .books-info-items{
+        @include absolute(0, 0, none, none, none);
+    }
+}
+.books-info:nth-child(even){
+    @include flex-row;
+        .books-info-items{
+        @include absolute(0, none, none, 0, none);
+    }
+}
+
+.event-other{
+    @include p-y(64px, 0);
+    position: relative;
+    div{
+        @include m-b(48px);
+        color: white;
+        p{
+            @include m-b(16px);
+            @include font(32px);
+            font-weight: 600;
+        }
+        ul{
+            li{
+                @include m-l(16px);
+                @include font(16px);
+                list-style-type: decimal;
+                span{
+                    color: $special;
+                }
+            }
+        }
+    }
+    .event-other-items{
+        @include absolute(-25%, 0, none, none, auto);
+        z-index: -9;
+    }
+}
+
+footer{
+    @include p-y(16px, 16px);
+    @include flex-row;
+    border-top: 1px solid $white;
+    background-color: $primary;
+    p{
+        @include font(16px);
+        color: $white;
+        a{
+            color: $white;
+        }
+    }
+    P:first-child{
+        @include m-x(0, auto);
+    }
+    p:nth-child(2){
+        @include m-x(auto, 12px);
+    }
+    p:last-child{
+        @include m-x(12px, 0);
+    }
+}
+
+@include desktop-m{
+    .mx{
+        @include m-x(5%, 5%);
+    }
+    .px{
+        @include p-x(5%, 5%);
+    }
+    .content{
+        @include p-y(64px, 64px);
+    }
+    .event-info{
+        .event-info-character{
+            @include m-b(40px);
+            div{
+                p{
+                    @include font(32px);
+                }
+            }
+        }
+        h3{
+            @include font(32px);
+        }
+    }
+    .main-vision{
+        min-height: 680px;
+        img{
+            width: 80%;
+        }
+        .main-vision-other{
+            @include absolute(none, 0, 32px, 0, auto);
+            p:last-child{
+                @include font(48px);
+            }
+        }
+    }
+    .books-info{
+        flex-wrap: wrap;
+        .books-info-title{
+            @include m-x(auto, auto);
+            @include m-b(32px);
+            @include flex-row;
+            width: 100%;
+            align-items: center;
+            h4{
+                @include m-x(auto, 16px);
+                @include m-b(0);
+                @include font(72px);
+                width: 33.3%;
+            }
+            img{
+                @include m-x(16px, 16px);
+                @include m-b(0);
+                max-width: 160px;
+            }
+            div{
+                width: 33.3%;
+                @include m-x(16px, auto);
+                h5{
+                    @include font(40px);
+                }
+            }
+        }
+        .books-info-content{
+            width: 100%;
+            .books-info-content-wrapper{
+                .books-info-content-wrapper-img{
+                    width: 20%;
+                }
+                .books-info-content-wrapper-data{
+                    width: 80%;
+                }
+            }
+        }
+        .books-info-items{
+            max-width: 240px;
+        }
+    }
+    .books-info:nth-child(odd){
+        @include flex-row;
+        .books-info-items{
+        }
+    }
+    .books-info:nth-child(even){
+        @include flex-row;
+            .books-info-items{
+            @include absolute(0, none, none, 0, none);
+        }
+    }
+    .event-other{
+        @include p-y(32px, 0);
+        div{
+            @include m-b(48px);
+            p{
+                @include font(24px);
+            }
+        }
+        .event-other-items{
+            max-width: 240px;
+            @include absolute(0, 0, none, unset, auto);
+        }
+    }
+}
+
+@include desktop-s{
+    .main-vision{
+        min-height: 600px;
+    }
+}
+
+@include pad-l{
+    .main-vision{
+        height: 752px !important;
+        img{
+            width: 100%;
+        }
+        .main-vision-other{
+            @include flex-col-r;
+            flex-wrap: wrap;
+            p{
+                width: 100%;
+                text-align: center;
+                white-space: nowrap;
+            }
+            p:last-child{
+                color: $special;
+            }
+        }
+    }
+    .event-info{
+        .event-info-character{
+            @include m-b(32px);
+            div{
+                p{
+                    @include font(24px);
+                }
+                span{
+                    @include absolute(none, 0, 8px, 0, auto)
+                }
+            }
+            div:first-child{
+                @include m-x(0, 8px);
+                color: $white;
+                background-color: $primary;
+            }
+            div:nth-child(2),div:nth-child(3){
+                @include m-x(8px, 8px);
+            }
+            div:last-child{
+                @include m-x(8px, 0);
+            }
+            div:nth-child(2),div:nth-child(3),div:last-child{
+                color: $primary;
+                background-color: $white;
+            }
+        }
+        h2{
+            @include font(16px);
+        }
+        h3{
+            @include font(24px);
+        }
+    }
+    
+    footer{
+        p:nth-child(2){
+            display: none;
+        }
+    }
+}
+
+@include pad-m{
+    header{
+        .menu{
+            .menu-list:first-child{
+                @include m-x(0, auto);
+                max-width: 200px;
+            }
+            .menu-list:nth-child(2){
+                @include m-x(auto, 12px);
+            }
+            .menu-list:nth-child(3){
+                @include m-x(12px, 12px);
+            }
+            .menu-list:last-child{
+                @include m-x(12px, 0px);
+            }
+        }
+    }
+    .main-vision{
+        height: 560px !important;
+    }
+    .books-info{
+        .books-info-title{
+            h4{
+                @include font(40px);
+            }
+            img{
+                max-width: 120px;
+            }
+            div{
+                h5{
+                    @include font(24px);
+                }
+                p{
+                    @include font(16px);
+                }
+            }
+        }
+    }
+}
+
+@include phone-l{
+    .content{
+        @include p-y(24px, 24px);
+    }
+    header{
+        .menu{
+            .menu-list:first-child{
+                @include m-x(0, auto);
+                max-width: 184px;
+            }
+            .menu-list:nth-child(2), .menu-list:nth-child(3){
+                display: none;
+            }
+            .menu-list:last-child{
+                @include m-x(24px, 0px);
+            }
+        }
+    }
+    .main-vision{
+        @include p-y(48px, 48px);
+        height: 256px !important;
+        min-height: 256px;
+        img{
+            position: static;
+        }
+        .main-vision-other{
+            position: static;
+            p:last-child{
+                @include font(24px);
+            }
+        }
+        .main-vision-circle{
+            display: none;
+        }
+    }
+    .event-info{
+        .event-info-character{
+            @include m-b(0);
+            flex-wrap: wrap;
+            div{
+                width: 47.5%;
+            }
+            div:first-child, div:nth-child(3){
+                @include m-x(0, 2.5%);
+                @include m-b(16px);
+            }
+            div:nth-child(2), div:last-child{
+                @include m-x(2.5%, 0);
+                @include m-b(16px);
+            }
+        }
+    }
+    .books-info{
+        .books-info-title{
+            @include flex-col;
+            img{
+                max-width: 160px;
+            }
+            div{
+                @include flex-row;
+                text-align: center;
+                h5{
+                    @include m-x(auto, 8px);
+                }
+                p{
+                    @include m-x(8px, auto);
+                }
+                h5, p{
+                    @include font(16px);
+                }
+            }
+            h4, img, div{
+                @include m-b(16px);
+                @include m-x(0, 0);
+                width: 100%;
+            }
+        }
+        .books-info-items{
+            display: none;
+        }
+        .books-info-content{
+            @include m-x(0, 0);
+            .books-info-content-wrapper{
+                @include flex-col;
+                .books-info-content-wrapper-img{
+                    @include m-x(0, 0);
+                    @include m-b(16px);
+                    width: 100%;
+                    img{
+                        @include m-x(auto, auto);
+                        display: block;
+                    }
+                }
+                .books-info-content-wrapper-data{
+                    @include m-x(0, 0);
+                    width: 100%;
+                    .icon-btn{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .event-other{
+        .event-other-items{
+            display: none;
+        }
+    }
+    footer{
+        flex-wrap: wrap;
+        p{
+            @include m-x(0, 0);
+            text-align: center;
+        }
+        p:first-child{
+            @include m-x(0, 0);
+            width: 100%;
+        }
+        p:last-child{
+            @include m-x(0, 0);
+            width: 100%;
+        }
+    }
+    .bg-line{
+        display: none;
+    }
+}
